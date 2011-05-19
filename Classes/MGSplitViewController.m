@@ -253,6 +253,8 @@
 	if (_reconfigurePopup) {
 		[self reconfigureForMasterInPopover:![self shouldShowMasterForInterfaceOrientation:theOrientation]];
 	}
+    
+    //TODO: retaining of leadingCorners etc. is confusing below. If there's no leak or crash potential it is very opaque...
 	
 	// Layout the master, detail and divider views appropriately, adding/removing subviews as needed.
 	// First obtain relevant geometry.
@@ -432,8 +434,8 @@
 		trailingCorners.cornerBackgroundColor = MG_DEFAULT_CORNER_COLOR;
 		trailingCorners.cornerRadius = MG_DEFAULT_CORNER_RADIUS;
 		_cornerViews = [[NSArray alloc] initWithObjects:leadingCorners, trailingCorners, nil];
-		[leadingCorners release];
-		[trailingCorners release];
+		[leadingCorners release], leadingCorners = nil;
+		[trailingCorners release], trailingCorners = nil;
 		
 	} else if ([_cornerViews count] == 2) {
 		leadingCorners = [_cornerViews objectAtIndex:0];
