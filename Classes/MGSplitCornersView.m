@@ -43,14 +43,14 @@
 #pragma mark Geometry helpers
 
 
-double deg2Rad(double degrees)
+CGFloat deg2Rad(CGFloat degrees)
 {
 	// Converts degrees to radians.
 	return degrees * (M_PI / 180.0);
 }
 
 
-double rad2Deg(double radians)
+CGFloat rad2Deg(CGFloat radians)
 {
 	// Converts radians to degrees.
 	return radians * (180 / M_PI);
